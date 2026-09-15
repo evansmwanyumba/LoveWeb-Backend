@@ -18,7 +18,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./love_app.db")
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-FRONTEND_URL = os.getenv("FRONTEND_URL", "https://love-web-frontend.vercel.app")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://love-web-mocha.vercel.app")
 
 engine = create_engine(
     DATABASE_URL, 
