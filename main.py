@@ -18,6 +18,8 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./love_app.db")
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://love-web-frontend.vercel.app")
+
 engine = create_engine(
     DATABASE_URL, 
     connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
@@ -81,7 +83,7 @@ app = FastAPI(title="Love & Proposal Webpage API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Production can restrict to Vercel URL
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
