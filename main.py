@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "super-secret-romantic-key-change-in-prod")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 7 days
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./love_app.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip() or "sqlite:///./love_app.db"
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
